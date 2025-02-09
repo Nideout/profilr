@@ -59,7 +59,6 @@ Using Node.js or NPM:
 npm run dev
 ```
 
-
 Then visit `http://localhost:4321` in your browser.
 
 ## 🌍 Deployment
