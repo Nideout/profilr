@@ -1,7 +1,5 @@
 # Profilr
 
-![Profilr Banner](https://your-image-url.com/banner.png)
-
 Profilr is a sleek, open-source profile card platform that lets users showcase their social links, Discord/Spotify status, and personalize their profile dynamically.
 
 ## ✨ Features
@@ -41,11 +39,26 @@ Using Bun:
 bun install
 ```
 
+Using Node.js or NPM:
+
+```sh
+npm install
+```
+
 ### Run Locally
+
+Using Bun:
 
 ```sh
 bun run dev
 ```
+
+Using Node.js or NPM:
+
+```sh
+npm run dev
+```
+
 
 Then visit `http://localhost:4321` in your browser.
 
