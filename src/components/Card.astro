@@ -1,34 +1,15 @@
 ---
-const profile = {
-  //   banner: "https://placehold.co/800x200?text=Banner",
-  //   avatar: "https://placehold.co/100x100?text=Avatar",
-  //   cover: "https://placehold.co/60x60?text=Song+Cover",
-  banner: "https://placehold.co/800x200/535159/FFF",
-  avatar:
-    "https://cdn.discordapp.com/avatars/576398944024789022/583909494fda574bf3abfb1451c1b792.png?size=4096&ignore=true",
-  name: "Trin1506",
-  username: "tuna_shrimp",
-  pronouns: "",
-  //   status: "This is a status message!",
-  about: "My bio reduced to atoms",
-  birthday: "15 June 2025",
-  song: {
-    title: "Never Gonna Give You Up",
-    artist: "Rick Astley",
-    duration: "3:32",
-    cover: "https://i.scdn.co/image/ab67616d0000b273baf89eb11ec7c657805d2da0",
-    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  },
-};
+const profile = Astro.props;
 ---
 
 <div
   class="max-w-md mx-auto bg-base-200 text-white rounded-2xl overflow-hidden shadow-lg"
 >
   <div class="relative pd-3">
-    <img src={profile.banner} alt="Banner" class="w-full h-36 object-cover" />
+    <img src={profile.banner} id="banner" alt="Banner" class="w-full h-36 object-cover" />
     <img
       src={profile.avatar}
+      id="avatar"
       alt="Avatar"
       class="w-24 h-24 rounded-full object-cover absolute bottom-[-45%] left-3 border-4 border-base-200"
     />
@@ -38,9 +19,10 @@ const profile = {
     <div class="absolute top-1/2 left-full -translate-y-1/2 ml-2">
       <div class="chat chat-start pt-15 pl-24">
         <div
+          id="status"
           class="chat-bubble chat-bubble-neutral max-w-max whitespace-nowrap text-sm"
         >
-          I'm yapping so hard!?!???!??!
+          {profile.status}
         </div>
       </div>
     </div>
@@ -49,10 +31,10 @@ const profile = {
   <div class="pt-13 p-3 relative">
     <div class="pt-5 flex items-center gap-4 flex-nowrap">
       <div>
-        <h2 class="text-xl font-semibold">{profile.name}</h2>
+        <h2 id="name" class="text-xl font-semibold">{profile.name}</h2>
         <p class="text-gray-400">
-          {profile.username}
-          {profile.pronouns && ` ・ ${profile.pronouns}`}
+          <span id="username">{profile.username}</span>
+          <span id="pronouns">{profile.pronouns && ` ・ ${profile.pronouns}`}</span>
         </p>
       </div>
 
@@ -65,14 +47,15 @@ const profile = {
 
     <div class="mt-3 p-3 bg-base-300 rounded-lg border border-base-300">
       <p class="text-gray-400 text-sm">About Me</p>
-      <p class="mt-1">{profile.about}</p>
+      <p id="about" class="mt-1">{profile.about}</p>
     </div>
 
     <div
       class="mt-3 p-3 bg-base-300 rounded-lg border border-base-300 flex items-center gap-2"
+      id="birthday-container"
     >
       <span class="text-gray-400 icon-[line-md--cake-filled]"></span>
-      <p>{profile.birthday}</p>
+      <p id="birthday">{profile.birthday}</p>
     </div>
 
     <div
@@ -80,17 +63,19 @@ const profile = {
     >
       <img
         src={profile.song.cover}
+        id="song-cover"
         alt="Song Cover"
         class="w-12 h-12 rounded-lg object-cover"
       />
       <div>
         <p class="text-gray-400 text-sm">Now Playing</p>
-        <a href={profile.song.link} class="text-primary font-medium">
+        <a id="song" href={profile.song.link} class="text-primary font-medium">
           {profile.song.artist} - {profile.song.title}
         </a>
         <p class="text-gray-400 text-xs">00:00 / {profile.song.duration}</p>
       </div>
       <a
+        id="song-link"
         href={profile.song.link}
         class="ml-auto icon-[line-md--play-filled] text-gray-400 hover:text-primary hover:scale-110 transition-transform duration-200"
         style="width: 1.5em; height: 1.5em;"></a>

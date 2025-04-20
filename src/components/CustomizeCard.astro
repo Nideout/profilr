@@ -1,0 +1,456 @@
+---
+import Card from "./Card.astro";
+
+const data = {
+  //   banner: "https://placehold.co/800x200?text=Banner",
+  //   avatar: "https://placehold.co/100x100?text=Avatar",
+  //   cover: "https://placehold.co/60x60?text=Song+Cover",
+  banner: "https://placehold.co/800x200/535159/FFF",
+  avatar:
+    "	https://cdn.discordapp.com/avatars/576398944024789022/b8a10a7f8b27512d6e6521bf3943213c.webp?size=4096?ignore=true",
+  name: "Trin1506",
+  username: "tuna_shrimp",
+  pronouns: "he/him",
+  status: "I'm yapping so hard!?!???!??!",
+  about: "My bio reduced to atoms",
+  birthday: "15 June 2025",
+  song: {
+    title: "Never Gonna Give You Up",
+    artist: "Rick Astley",
+    duration: "3:32",
+    cover: "https://i.scdn.co/image/ab67616d0000b273baf89eb11ec7c657805d2da0",
+    link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  },
+};
+---
+<script is:inline define:vars={{data}}>
+  document.addEventListener("DOMContentLoaded", () => {
+    let valid = true;
+    const form = document.getElementById("form");
+    const submit = document.getElementById("submit");
+    const connect = document.getElementById("connect");
+
+    const name_field = document.getElementById("name-field");
+    const username_field = document.getElementById("username-field");
+    const status_field = document.getElementById("status-field");
+    const pronouns_field = document.getElementById("pronouns-field");
+    const about_field = document.getElementById("about-field");
+    const birthday_field = document.getElementById("birthday-field");
+    const song_field = document.getElementById("song-field");
+    const avatar_field = document.getElementById("avatar-field");
+    const banner_field = document.getElementById("banner-field");
+
+    const name_label = document.getElementById("name-label");
+    const username_label = document.getElementById("username-label");
+    const status_label = document.getElementById("status-label");
+    const pronouns_label = document.getElementById("pronouns-label");
+    const about_label = document.getElementById("about-label");
+    const birthday_label = document.getElementById("birthday-label");
+    const song_label = document.getElementById("song-label");
+    const avatar_label = document.getElementById("avatar-label");
+    const banner_label = document.getElementById("banner-label");
+    const submit_label = document.getElementById("submit-label");
+
+    const name_legend = document.getElementById("name-legend");
+    const username_legend = document.getElementById("username-legend");
+    const status_legend = document.getElementById("status-legend");
+    const pronouns_legend = document.getElementById("pronouns-legend");
+    const about_legend = document.getElementById("about-legend");
+    const birthday_legend = document.getElementById("birthday-legend");
+    const song_legend = document.getElementById("song-legend");
+    const avatar_legend = document.getElementById("avatar-legend");
+    const banner_legend = document.getElementById("banner-legend");
+
+    const avatar_clr = document.getElementById("avatar-clr");
+    const banner_clr = document.getElementById("banner-clr");
+    
+    const name_display = document.getElementById("name");
+    const username_display = document.getElementById("username");
+    const pronouns_display = document.getElementById("pronouns");
+    const status_display = document.getElementById("status");
+    const about_display = document.getElementById("about");
+    const birthday_display = document.getElementById("birthday");
+    const song_display = document.getElementById("song");
+    const song_cover_display = document.getElementById("song-cover");
+    const song_link_display = document.getElementById("song-link");
+    const avatar_display = document.getElementById("avatar");
+    const banner_display = document.getElementById("banner");
+
+    name_field.value = data.name;
+    username_field.value = data.username;
+    status_field.value = data.status;
+    pronouns_field.value = data.pronouns;
+    about_field.value = data.about;
+    birthday_field.value = data.birthday ? new Date(new Date(data.birthday).setDate(new Date(data.birthday).getDate() + 1)).toISOString().split('T')[0] : '';
+    song_field.value = data.song.link;
+    avatar_field.value = "";
+    banner_field.value = "";
+
+    function updateName() {
+      data.name = name_field.value;
+      name_display.innerText = data.name;
+      name_label.innerText = `${data.name.length} / 32`;
+      if (data.name.length === 0) {
+        name_label.style.color = "var(--color-red-500)";
+        name_field.style.borderColor = "var(--color-red-500)";
+        name_field.style.color = "var(--color-red-500)";
+        name_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else if (data.name.length > 32) {
+        name_label.style.color = "var(--color-red-500)";
+        name_field.style.borderColor = "var(--color-red-500)";
+        name_field.style.color = "var(--color-red-500)";
+        name_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        name_label.style.color = "var(--color-gray-400)";
+        name_field.style.borderColor = "var(--input-color)";
+        name_field.style.color = "var(--color-white)";
+        name_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+      }
+    }
+    function updateUsername() {
+      data.username = username_field.value;
+      username_display.innerText = data.username;
+      username_label.innerText = `${data.username.length} / 32`;
+      if (data.username.length === 0) {
+        username_label.style.color = "var(--color-red-500)";
+        username_field.style.borderColor = "var(--color-red-500)";
+        username_field.style.color = "var(--color-red-500)";
+        username_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else if (data.username.length > 32) {
+        username_label.style.color = "var(--color-red-500)";
+        username_field.style.borderColor = "var(--color-red-500)";
+        username_field.style.color = "var(--color-red-500)";
+        username_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        username_label.style.color = "var(--color-gray-400)";
+        username_field.style.borderColor = "var(--input-color)";
+        username_field.style.color = "var(--color-white)";
+        username_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+      }
+    }
+    function updateStatus() {
+      data.status = status_field.value;
+      status_display.innerText = data.status;
+      status_label.innerText = `${data.status.length} / 32`;
+      if (data.status.length === 0) {
+        status_label.style.color = "var(--color-red-500)";
+        status_field.style.borderColor = "var(--color-red-500)";
+        status_field.style.color = "var(--color-red-500)";
+        status_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else if (data.status.length > 32) {
+        status_label.style.color = "var(--color-red-500)";
+        status_field.style.borderColor = "var(--color-red-500)";
+        status_field.style.color = "var(--color-red-500)";
+        status_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        status_label.style.color = "var(--color-gray-400)";
+        status_field.style.borderColor = "var(--input-color)";
+        status_field.style.color = "var(--color-white)";
+        status_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+      }
+    }
+    function updatePronouns() {
+      data.pronouns = pronouns_field.value;
+      pronouns_display.innerText = data.pronouns && ` ・ ${data.pronouns}`;
+      pronouns_label.innerText = `${data.pronouns.length} / 32`;
+      if (data.pronouns.length > 32) {
+        pronouns_label.style.color = "var(--color-red-500)";
+        pronouns_field.style.borderColor = "var(--color-red-500)";
+        pronouns_field.style.color = "var(--color-red-500)";
+        pronouns_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        pronouns_label.style.color = "var(--color-gray-400)";
+        pronouns_field.style.borderColor = "var(--input-color)";
+        pronouns_field.style.color = "var(--color-white)";
+        pronouns_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+      }
+    }
+    function updateAbout() {
+      data.about = about_field.value;
+      about_display.innerText = data.about;
+      about_label.innerText = `${data.about.length} / 190`;
+      if (data.about.length === 0) {
+        about_label.style.color = "var(--color-red-500)";
+        about_field.style.borderColor = "var(--color-red-500)";
+        about_field.style.color = "var(--color-red-500)";
+        about_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else if (data.about.length > 190) {
+        about_label.style.color = "var(--color-red-500)";
+        about_field.style.borderColor = "var(--color-red-500)";
+        about_field.style.color = "var(--color-red-500)";
+        about_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        about_label.style.color = "var(--color-gray-400)";
+        about_field.style.borderColor = "var(--input-color)";
+        about_field.style.color = "var(--color-white)";
+        about_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+      }
+    }
+    function updateBirthday() {
+      if (birthday_field.value === "") {
+        const birthday_container = document.getElementById("birthday-container");
+        birthday_container.style.display = "none";
+      } else {
+        const birthday_container = document.getElementById("birthday-container");
+        birthday_container.style.display = "flex";
+          data.birthday = new Intl.DateTimeFormat("en-US", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }).format(new Date(birthday_field.value)).replace(",", "");
+        data.birthday = data.birthday.split(" ")[1] + " " + data.birthday.split(" ")[0] + " " + data.birthday.split(" ")[2];
+        birthday_display.innerText = data.birthday;
+        const selectedDate = new Date(birthday_field.value);
+        const currentDate = new Date();
+        if (selectedDate > currentDate) {
+          birthday_label.innerText = "Invalid date";
+          birthday_field.style.borderColor = "var(--color-red-500)";
+          birthday_field.style.color = "var(--color-red-500)";
+          birthday_legend.style.color = "var(--color-red-500)";
+          valid = false;
+        } else {
+          birthday_label.innerText = "";
+          birthday_field.style.borderColor = "var(--input-color)";
+          birthday_field.style.color = "var(--color-white)";
+          birthday_legend.style.color = "var(--color-gray-400)";
+          valid = true;
+        }
+      }
+    }
+    function updateSong() {
+      data.song.link = song_field.value;
+    
+    }
+
+    function returnFileSize(number) {
+      if (number < 1e3) {
+        return `${number} bytes`;
+      } else if (number >= 1e3 && number < 1e6) {
+        return `${(number / 1e3).toFixed(1)} KB`;
+      } else {
+        return `${(number / 1e6).toFixed(1)} MB`;
+      }
+    }
+    function updateAvatar() {
+      const file = avatar_field.files[0];
+      if (file && file.size > 10 * 1e6) {
+        avatar_label.innerText = `File size exceeds 10 MB (${returnFileSize(file.size)})`;
+        avatar_label.style.color = "var(--color-red-500)";
+        avatar_field.style.borderColor = "var(--color-red-500)";
+        avatar_field.style.color = "var(--color-red-500)";
+        avatar_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        avatar_label.innerText = `Accept image file up to 10 MB`;
+        avatar_label.style.color = "var(--color-gray-400)";
+        avatar_field.style.borderColor = "var(--input-color)";
+        avatar_field.style.color = "var(--color-white)";
+        avatar_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            avatar_display.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          avatar_display.src = data.avatar;
+        }
+      }
+    }
+    function updateBanner() {
+      const file = banner_field.files[0];
+      if (file && file.size > 15 * 1e6) {
+        banner_label.innerText = `File size exceeds 15 MB (${returnFileSize(file.size)})`;
+        banner_label.style.color = "var(--color-red-500)";
+        banner_field.style.borderColor = "var(--color-red-500)";
+        banner_field.style.color = "var(--color-red-500)";
+        banner_legend.style.color = "var(--color-red-500)";
+        valid = false;
+      } else {
+        banner_label.innerText = `Accept image file up to 15 MB`;
+        banner_label.style.color = "var(--color-gray-400)";
+        banner_field.style.borderColor = "var(--input-color)";
+        banner_field.style.color = "var(--color-white)";
+        banner_legend.style.color = "var(--color-gray-400)";
+        valid = true;
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            banner_display.src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        } else {
+          banner_display.src = data.banner;
+        }
+      }
+    }
+    function clearAvatar() {
+      avatar_field.value = "";
+      avatar_display.src = data.avatar;
+      avatar_label.innerText = `Accept image file up to 10 MB`;
+      avatar_label.style.color = "var(--color-gray-400)";
+      avatar_field.style.borderColor = "var(--input-color)";
+      avatar_field.style.color = "var(--color-white)";
+      avatar_legend.style.color = "var(--color-gray-400)";
+    }
+    function clearBanner() {
+      banner_field.value = "";
+      banner_display.src = data.banner;
+      banner_label.innerText = `Accept image file up to 15 MB`;
+      banner_label.style.color = "var(--color-gray-400)";
+      banner_field.style.borderColor = "var(--input-color)";
+      banner_field.style.color = "var(--color-white)";
+      banner_legend.style.color = "var(--color-gray-400)";
+    }
+
+    function submitForm() {
+      if (valid) {
+        window.location.href = "/";
+      } else {
+        submit_label.innerText = "Please fill in all required fields";
+        setTimeout(() => {
+          submit_label.innerText = "";
+        }, 5000);
+      }
+    }
+
+    name_field.addEventListener("input", updateName);
+    username_field.addEventListener("input", updateUsername);
+    status_field.addEventListener("input", updateStatus);
+    pronouns_field.addEventListener("input", updatePronouns);
+    about_field.addEventListener("input", updateAbout);
+    birthday_field.addEventListener("input", updateBirthday);
+    song_field.addEventListener("input", updateSong);
+    avatar_field.addEventListener("change", updateAvatar);
+    banner_field.addEventListener("change", updateBanner);
+    avatar_clr.addEventListener("click", clearAvatar);
+    banner_clr.addEventListener("click", clearBanner);
+
+    submit.addEventListener("click", submitForm);
+  });
+</script>
+<style>
+  .fieldset {
+    padding-block: unset;
+    font-size: unset;
+    gap: unset;
+  }
+</style>
+<div
+  class="mx-auto p-6 bg-base-300 text-white rounded-2xl overflow-hidden shadow-lg"
+>
+  <p class="font-bold text-2xl">Customize</p>
+  <div class="grid grid-cols-2 gap-4">
+    <form class="grid grid-cols-2 gap-x-4 pt-2" id="form">
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="name-legend">Display Name *</legend>
+        <input type="text" class="input" id="name-field" value={data.name} />
+        <p class="label text-grey-500 text-sm" id="name-label">{data.name.length} / 32</p>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="username-legend">Username *</legend>
+        <input type="text" class="input" id="username-field" value={data.username} />
+        <p class="label text-grey-500 text-sm" id="username-label">{data.username.length} / 32</p>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="status-legend">Status *</legend>
+        <input type="text" class="input w-full" id="status-field" value={data.status} />
+        <p class="label text-grey-500 text-sm" id="status-label">{data.status.length} / 32</p>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="pronouns-legend">Pronouns</legend>
+        <input type="text" class="input w-full" id="pronouns-field" value={data.pronouns} />
+        <p class="label text-grey-500 text-sm" id="pronouns-label">{data.pronouns.length} / 32</p>
+      </fieldset>
+      <fieldset class="fieldset col-span-2">
+        <legend class="fieldset-legend text-gray-400" id="about-legend">About Me *</legend>
+        <textarea class="textarea w-full" id="about-field">{data.about}</textarea>
+        <p class="label text-grey-500 text-sm" id="about-label">{data.about.length} / 190</p>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="birthday-legend">Birthday</legend>
+        <input 
+          type="date" 
+          class="input" 
+          id="birthday-field" 
+          value={data.birthday ? new Date(new Date(data.birthday).setDate(new Date(data.birthday).getDate() + 1)).toISOString().split('T')[0] : ''}
+        />
+        <p class="label text-red-500 text-sm" id="birthday-label" />
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend class="fieldset-legend text-gray-400" id="song-legend">Song</legend>
+        <input type="text" class="input" id="song-field" value={data.song.link} />
+        <p class="label text-grey-500 text-sm" id="song-label" />
+      </fieldset>
+      <fieldset class="fieldset col-span-2">
+        <legend class="fieldset-legend text-gray-400" id="avatar-legend">Avatar</legend>
+        <div class="flex gap-2">
+          <input type="file" class="file-input w-full" accept="image/*" id="avatar-field" />
+          <button class="btn btn-soft px-2" type="button"><span class="icon-[ic--round-delete-outline] w-[1.2em] h-[1.2em]" id="avatar-clr" /></button>
+        </div>
+        <p class="label text-grey-500 text-sm" id="avatar-label">Accept image file up to 10 MB</p>
+      </fieldset>
+      <fieldset class="fieldset col-span-2">
+        <legend class="fieldset-legend text-gray-400" id="banner-legend">Banner</legend>
+        <div class="flex gap-2">
+          <input type="file" class="file-input w-full" accept="image/*" id="banner-field" />
+          <button class="btn btn-soft px-2" type="button"><span class="icon-[ic--round-delete-outline] w-[1.2em] h-[1.2em]" id="banner-clr" /></button>
+        </div>
+        <p class="label text-grey-500 text-sm" id="banner-label">Accept image file up to 15 MB</p>
+      </fieldset>
+      <fieldset class="fieldset col-span-2">
+        <div class="grid grid-cols-2 gap-4">
+          <button class="btn btn-soft bg-[#5865F2] mt-4" id="connect" type="button">
+            <span class="icon-[ic--baseline-discord] w-[1.2em] h-[1.2em] text-white" />
+            <p class="text-white">Connect to Discord</p>
+          </button>
+          <button class="btn btn-soft bg-success mt-4" id="submit" type="button">
+            <span class="icon-[ic--outline-save] w-[1.2em] h-[1.2em] text-black" />
+            <p class="text-black">Save</p>
+          </button>
+        </div>
+        <p class="label text-red-500 text-sm" id="submit-label" />
+      </fieldset>
+    </form>
+    <fieldset class="fieldset mt-2">
+      <legend class="fieldset-legend text-gray-400">Preview</legend>
+      <div class="bg-base-200 rounded-2xl" id="preview">
+        <Card
+          id="preview"
+          banner={data.banner}
+          avatar={data.avatar}
+          name={data.name}
+          username={data.username}
+          pronouns={data.pronouns}
+          status={data.status}
+          about={data.about}
+          birthday={data.birthday}
+          song={{
+            title: data.song.title,
+            artist: data.song.artist,
+            duration: data.song.duration,
+            cover: data.song.cover,
+            link: data.song.link,
+          }}
+        />
+      </div>
+    </fieldset>
+    
+  </div>
+  
+</div>
